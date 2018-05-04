@@ -33,15 +33,20 @@ class ViewController: UIViewController, CropViewControllerDelegate, UIImagePicke
     
         // -- Uncomment the following lines of code to test out the aspect ratio features --
         //cropController.aspectRatioPreset = .presetSquare; //Set the initial aspect ratio as a square
-        //cropController.aspectRatioLockEnabled = true // The crop box is locked to the aspect ratio and can't be resized away from it
+        cropController.customAspectRatio = CGSize(width: 2.0, height: 3.0)
+        cropController.aspectRatioLockEnabled = true // The crop box is locked to the aspect ratio and can't be resized away from it
         //cropController.resetAspectRatioEnabled = false // When tapping 'reset', the aspect ratio will NOT be reset back to default
-        //cropController.aspectRatioPickerButtonHidden = true
+        cropController.aspectRatioPickerButtonHidden = true
+        
+        cropController.aspectRatioLockDimensionSwapEnabled = false
+        
+        cropController.showActivitySheetOnDone = false
     
         // -- Uncomment this line of code to place the toolbar at the top of the view controller --
         //cropController.toolbarPosition = .top
     
         //cropController.rotateButtonsHidden = true
-        //cropController.rotateClockwiseButtonHidden = true
+        cropController.rotateClockwiseButtonHidden = true
     
         //cropController.doneButtonTitle = "Title"
         //cropController.cancelButtonTitle = "Title"
