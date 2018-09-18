@@ -22,11 +22,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (CropRotate)
-
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIImage (TOCropRotate)
+@interface UIImage (CropRotate)
 - (nonnull UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular;
 - (nonnull UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular scale:(CGFloat)scale;
 @end

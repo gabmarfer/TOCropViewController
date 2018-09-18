@@ -22,7 +22,7 @@
 
 #import "UIImage+CropRotate.h"
 
-@implementation UIImage (TOCropRotate)
+@implementation UIImage (CropRotate)
 
 - (BOOL)hasAlpha
 {
