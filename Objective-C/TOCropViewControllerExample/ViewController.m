@@ -28,8 +28,9 @@
 @implementation ViewController
 
 #pragma mark - Image Picker Delegate -
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
     TOCropViewController *cropController = [[TOCropViewController alloc] initWithCroppingStyle:self.croppingStyle image:image];
     cropController.delegate = self;
 
@@ -59,7 +60,13 @@
     
     //If profile picture, push onto the same navigation stack
     if (self.croppingStyle == TOCropViewCroppingStyleCircular) {
-        [picker pushViewController:cropController animated:YES];
+        if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+            [picker dismissViewControllerAnimated:YES completion:^{
+                [self presentViewController:cropController animated:YES completion:nil];
+            }];
+        } else {
+            [picker pushViewController:cropController animated:YES];
+        }
     }
     else { //otherwise dismiss, and then present from the main controller
         [picker dismissViewControllerAnimated:YES completion:^{
@@ -245,6 +252,10 @@
     self.imageView.userInteractionEnabled = YES;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:self.imageView];
+    
+    if (@available(iOS 11.0, *)) {
+        self.imageView.accessibilityIgnoresInvertColors = YES;
+    }
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapImageView)];
     [self.imageView addGestureRecognizer:tapRecognizer];

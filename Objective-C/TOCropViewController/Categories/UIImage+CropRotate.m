@@ -22,7 +22,7 @@
 
 #import "UIImage+CropRotate.h"
 
-@implementation UIImage (CropRotate)
+@implementation UIImage (TOCropRotate)
 
 - (BOOL)hasAlpha
 {
@@ -70,8 +70,7 @@
     }
     UIGraphicsEndImageContext();
     
-    return [UIImage imageWithCGImage:croppedImage.CGImage scale:scale orientation:UIImageOrientationUp];
+    return [UIImage imageWithCGImage:croppedImage.CGImage scale: self.scale orientation:UIImageOrientationUp];
 }
-
 
 @end

@@ -24,7 +24,11 @@
 
 @interface UIImage (CropRotate)
 
--(nonnull UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular;
-- (nonnull UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular scale:(CGFloat)scale;
+NS_ASSUME_NONNULL_BEGIN
 
+@interface UIImage (TOCropRotate)
+- (nonnull UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular;
+- (nonnull UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular scale:(CGFloat)scale;
 @end
+
+NS_ASSUME_NONNULL_END
